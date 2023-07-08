@@ -1,7 +1,7 @@
 import 'package:dictionary/src/application/controllers/home_controller.dart';
 import 'package:dictionary/src/domain/models/method.dart';
 import 'package:dictionary/src/domain/models/word.dart';
-import 'package:dictionary/src/domain/providers/http.dart';
+import 'package:dictionary/src/domain/providers/i_http.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
 

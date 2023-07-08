@@ -1,5 +1,5 @@
 import 'package:dictionary/src/application/controllers/word_details_controller.dart';
-import 'package:dictionary/src/domain/providers/http.dart';
+import 'package:dictionary/src/domain/providers/i_http.dart';
 import 'package:dictionary/src/infra/providers/http/dio.dart';
 import 'package:get/get.dart';
 

@@ -34,7 +34,7 @@ class Login extends GetView<LoginController> {
                     ))),
             TextField(
                 style: TextStyle(fontSize: Get.width * 0.05),
-                controller: controller.loginController,
+                controller: controller.passwordController,
                 decoration: InputDecoration(
                     alignLabelWithHint: true,
                     contentPadding:
