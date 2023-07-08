@@ -26,10 +26,22 @@ class WordDetails extends GetView<WordDetailsController> {
                               padding: EdgeInsets.symmetric(
                                   horizontal: Get.width * 0.02,
                                   vertical: Get.height * 0.01),
-                              child: InkWell(
-                                  child: Icon(Icons.close,
-                                      color: Colors.red, size: Get.width * 0.1),
-                                  onTap: () => Get.back()),
+                              child: Row(
+                                children: [
+                                  InkWell(
+                                      child: Icon(Icons.close,
+                                          color: Colors.red,
+                                          size: Get.width * 0.1),
+                                      onTap: () => Get.back()),
+                                  const Spacer(),
+                                  InkWell(
+                                      child: Icon(Icons.star_border,
+                                          color: Colors.yellow,
+                                          size: Get.width * 0.1),
+                                      onTap: () =>
+                                          controller.saveFavoriteWord()),
+                                ],
+                              ),
                             ),
                             Container(
                               height: Get.height * 0.3,

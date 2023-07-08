@@ -10,12 +10,6 @@ class LoginController extends GetxController {
   final IDataBaseRepository _dataBaseRepository =
       Get.find<IDataBaseRepository>();
 
-  @override
-  void onInit() async {
-    await _dataBaseRepository.init();
-    super.onInit();
-  }
-
   Future<void> login() async {
     dynamic responseLogin = await _dataBaseRepository.login(
         loginController.text, passwordController.text);

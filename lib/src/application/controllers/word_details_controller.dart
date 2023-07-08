@@ -2,6 +2,7 @@ import 'package:dictionary/src/application/controllers/home_controller.dart';
 import 'package:dictionary/src/domain/models/method.dart';
 import 'package:dictionary/src/domain/models/word.dart';
 import 'package:dictionary/src/domain/providers/i_http.dart';
+import 'package:dictionary/src/domain/repositories/i_data_base_repository.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
 
@@ -11,6 +12,8 @@ class WordDetailsController extends GetxController {
   Word? wordDetails;
   FlutterTts flutterTts = FlutterTts();
   RxBool isPlaying = false.obs;
+  final IDataBaseRepository _dataBaseRepository =
+      Get.find<IDataBaseRepository>();
 
   @override
   void onInit() async {
@@ -20,6 +23,7 @@ class WordDetailsController extends GetxController {
 
   Future<void> getWordDetails() async {
     loading.value = true;
+    await _dataBaseRepository.addHistoryWord(word);
     if (Get.find<HomeController>()
         .cachedWords
         .any((element) => element.word == word)) {
@@ -70,5 +74,9 @@ class WordDetailsController extends GetxController {
         isPlaying.value = false;
       };
     }
+  }
+
+  Future<void> saveFavoriteWord() async {
+    _dataBaseRepository.addFavoriteWord(word);
   }
 }
