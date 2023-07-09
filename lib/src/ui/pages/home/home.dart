@@ -17,10 +17,10 @@ class Home extends GetView<HomeController> {
         style: TabStyle.react,
         activeColor: Colors.white,
         onTap: (int tabNum) => controller.changeWords(tabNum),
-        items: const [
-          TabItem(icon: Icons.wordpress_outlined, title: 'Home'),
-          TabItem(icon: Icons.star_border, title: 'Favorite'),
-          TabItem(icon: Icons.history_rounded, title: 'History'),
+        items: [
+          TabItem(icon: Image.asset('assets/images/icon.jpg'), title: 'Words'),
+          const TabItem(icon: Icons.star_border, title: 'Favorite'),
+          const TabItem(icon: Icons.history_rounded, title: 'History'),
         ],
       ),
       body: Column(
@@ -28,31 +28,34 @@ class Home extends GetView<HomeController> {
           Padding(
             padding: EdgeInsets.symmetric(
                 vertical: Get.width * 0.02, horizontal: Get.height * 0.02),
-            child: SizedBox(
-              height: Get.height * 0.06,
-              child: TextField(
-                style: TextStyle(fontSize: Get.width * 0.05),
-                controller: controller.searchController,
-                onChanged: controller.search,
-                decoration: InputDecoration(
-                    alignLabelWithHint: true,
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: Get.width * 0.02),
-                    hintText: 'Search...',
-                    suffixIcon: IconButton(
-                      icon: const Icon(Icons.clear),
-                      onPressed: () => controller.clearSearch(),
+            child: TextField(
+              style: TextStyle(fontSize: Get.width * 0.05),
+              cursorColor: const Color(0xFF465275),
+              controller: controller.searchController,
+              onChanged: controller.search,
+              decoration: InputDecoration(
+                  alignLabelWithHint: true,
+                  contentPadding:
+                      EdgeInsets.symmetric(horizontal: Get.width * 0.02),
+                  hintText: 'Search...',
+                  suffixIcon: IconButton(
+                    icon: const Icon(
+                      Icons.clear,
+                      color: Color(0xFF465275),
                     ),
-                    prefixIcon: const Icon(Icons.search),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                      borderSide: const BorderSide(
-                          color: Color(0xFF465275), width: 0.8),
-                    )),
-              ),
+                    focusColor: const Color(0xFF465275),
+                    onPressed: () => controller.clearSearch(),
+                  ),
+                  prefixIcon:
+                      const Icon(Icons.search, color: Color(0xFF465275)),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide:
+                        const BorderSide(color: Color(0xFF465275), width: 0.8),
+                  )),
             ),
           ),
           Expanded(

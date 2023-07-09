@@ -13,7 +13,7 @@ class WordDetails extends GetView<WordDetailsController> {
       body: Obx(
         () => controller.loading.value
             ? const Center(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(color: Color(0xFF465275)),
               )
             : Column(
                 children: [
