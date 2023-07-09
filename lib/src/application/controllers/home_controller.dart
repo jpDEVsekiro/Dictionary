@@ -15,7 +15,7 @@ class HomeController extends GetxController {
   final RxList<String> favoriteWords = <String>[].obs;
   final RxList<String> wordsFilter = <String>[].obs;
   final PagingController pagingController = PagingController(firstPageKey: 0);
-  final List<Word> cachedWords = <Word>[];
+  final List<Map<String, Word?>> cachedWords = <Map<String, Word?>>[];
   final int take = 200;
   int tabNum = 0;
   int skip = 0;

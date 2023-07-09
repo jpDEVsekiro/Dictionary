@@ -16,7 +16,7 @@ class WordDetailsController extends GetxController {
       Get.find<IDataBaseRepository>();
 
   @override
-  void onInit() async {
+  void onInit() {
     getWordDetails();
     super.onInit();
   }
@@ -26,16 +26,18 @@ class WordDetailsController extends GetxController {
     await _dataBaseRepository.addHistoryWord(word);
     if (Get.find<HomeController>()
         .cachedWords
-        .any((element) => element.word == word)) {
+        .any((element) => element.keys.first == word)) {
       wordDetails = Get.find<HomeController>()
           .cachedWords
-          .firstWhere((element) => element.word == word);
+          .firstWhere((element) => element.keys.first == word)[word];
     } else {
       dynamic result =
           await Get.find<IHttp>().request(url: word, method: Method.get);
       if (result != false) {
         wordDetails = Word.fromJson(result);
-        Get.find<HomeController>().cachedWords.add(wordDetails!);
+        Get.find<HomeController>().cachedWords.add({word: wordDetails});
+      } else {
+        Get.find<HomeController>().cachedWords.add({word: null});
       }
     }
     loading.value = false;
