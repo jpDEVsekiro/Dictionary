@@ -66,6 +66,25 @@ class Home extends GetView<HomeController> {
                     itemBuilder: (context, word, index) => WordCard(
                           word: word.toString(),
                           onTap: () => controller.navigateWord(word.toString()),
+                        ),
+                    firstPageProgressIndicatorBuilder: (context) =>
+                        const Center(
+                          child: CircularProgressIndicator(
+                            color: Color(0xFF465275),
+                          ),
+                        ),
+                    noItemsFoundIndicatorBuilder: (context) => Center(
+                          child: Text(
+                            'No words found',
+                            style: TextStyle(
+                                fontSize: Get.width * 0.05,
+                                color: const Color(0xFF465275)),
+                          ),
+                        ),
+                    newPageProgressIndicatorBuilder: (context) => const Center(
+                          child: CircularProgressIndicator(
+                            color: Color(0xFF465275),
+                          ),
                         )),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,

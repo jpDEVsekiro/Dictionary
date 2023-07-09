@@ -79,7 +79,7 @@ class CreateAccount extends GetView<CreateAccountController> {
                       child: TextField(
                           style: TextStyle(fontSize: Get.width * 0.05),
                           obscureText: true,
-                          controller: controller.passwordController,
+                          controller: controller.confirmPasswordController,
                           cursorColor: const Color(0xFF465275),
                           decoration: InputDecoration(
                               alignLabelWithHint: true,
@@ -101,22 +101,27 @@ class CreateAccount extends GetView<CreateAccountController> {
                     Padding(
                       padding: EdgeInsets.only(
                           top: Get.height * 0.05, bottom: Get.height * 0.015),
-                      child: InkWell(
-                        onTap: () => controller.createAccount(),
-                        child: Container(
-                          width: Get.width * 0.5,
-                          height: Get.height * 0.06,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15.0),
-                            color: const Color(0xFF465275),
-                          ),
-                          child: const Center(
-                            child: Text(
-                              'Create Account',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ),
-                        ),
+                      child: Obx(
+                        () => controller.isLoading.value
+                            ? const CircularProgressIndicator(
+                                color: Color(0xFF465275))
+                            : InkWell(
+                                onTap: () => controller.createAccount(),
+                                child: Container(
+                                  width: Get.width * 0.5,
+                                  height: Get.height * 0.06,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    color: const Color(0xFF465275),
+                                  ),
+                                  child: const Center(
+                                    child: Text(
+                                      'Create Account',
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                  ),
+                                ),
+                              ),
                       ),
                     ),
                   ],

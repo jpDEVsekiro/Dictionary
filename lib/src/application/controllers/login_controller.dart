@@ -11,8 +11,10 @@ class LoginController extends GetxController {
   final TextEditingController passwordController = TextEditingController();
   final IDataBaseRepository _dataBaseRepository =
       Get.find<IDataBaseRepository>();
+  final RxBool isLoading = false.obs;
 
   Future<void> login() async {
+    isLoading.value = true;
     dynamic responseLogin = await _dataBaseRepository.login(
         loginController.text, passwordController.text);
     if (responseLogin == true) {
@@ -21,6 +23,7 @@ class LoginController extends GetxController {
       Get.snackbar('Erro:', responseLogin.toString(),
           icon: const Icon(Icons.error), snackPosition: SnackPosition.BOTTOM);
     }
+    isLoading.value = false;
   }
 
   void goToRegister() {

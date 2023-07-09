@@ -11,10 +11,42 @@ class CreateAccountController extends GetxController {
       TextEditingController();
   final IDataBaseRepository _dataBaseRepository =
       Get.find<IDataBaseRepository>();
+  final RxBool isLoading = false.obs;
 
   createAccount() async {
-    await _dataBaseRepository.createAccount(
+    if (valid() == false) {
+      return;
+    }
+    isLoading.value = true;
+    dynamic result = await _dataBaseRepository.createAccount(
         emailController.text, passwordController.text);
-    Get.offAll(() => const Home(), binding: HomeBinding());
+    if (result == true) {
+      Get.offAll(() => const Home(), binding: HomeBinding());
+    } else {
+      Get.snackbar('Erro:', result.toString(),
+          icon: const Icon(Icons.error), snackPosition: SnackPosition.BOTTOM);
+    }
+    isLoading.value = false;
+  }
+
+  valid() {
+    if (emailController.text.isEmpty) {
+      Get.snackbar('Erro', 'Email is empty',
+          icon: const Icon(Icons.error), snackPosition: SnackPosition.BOTTOM);
+      return false;
+    } else if (GetUtils.isEmail(emailController.text) == false) {
+      Get.snackbar('Erro', 'Email is invalid',
+          icon: const Icon(Icons.error), snackPosition: SnackPosition.BOTTOM);
+      return false;
+    } else if (passwordController.text.isEmpty) {
+      Get.snackbar('Erro', 'Password is empty',
+          icon: const Icon(Icons.error), snackPosition: SnackPosition.BOTTOM);
+      return false;
+    } else if (passwordController.text != confirmPasswordController.text) {
+      Get.snackbar('Erro', 'Passwords do not match',
+          icon: const Icon(Icons.error), snackPosition: SnackPosition.BOTTOM);
+      return false;
+    }
+    return true;
   }
 }
