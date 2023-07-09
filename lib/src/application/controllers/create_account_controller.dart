@@ -7,6 +7,8 @@ import 'package:get/get.dart';
 class CreateAccountController extends GetxController {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
   final IDataBaseRepository _dataBaseRepository =
       Get.find<IDataBaseRepository>();
 
