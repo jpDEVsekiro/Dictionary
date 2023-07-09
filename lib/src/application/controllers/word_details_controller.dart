@@ -77,6 +77,12 @@ class WordDetailsController extends GetxController {
   }
 
   Future<void> saveFavoriteWord() async {
-    _dataBaseRepository.addFavoriteWord(word);
+    if (Get.find<HomeController>()
+        .favoriteWords
+        .any((element) => element == word)) {
+      _dataBaseRepository.removeFavoriteWord(word);
+    } else {
+      _dataBaseRepository.addFavoriteWord(word);
+    }
   }
 }

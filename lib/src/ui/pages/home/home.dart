@@ -16,6 +16,7 @@ class Home extends GetView<HomeController> {
         backgroundColor: Colors.blue,
         style: TabStyle.react,
         activeColor: Colors.white,
+        onTap: (int tabNum) => controller.changeWords(tabNum),
         items: const [
           TabItem(icon: Icons.wordpress_outlined, title: 'Home'),
           TabItem(icon: Icons.star_border, title: 'Favorite'),

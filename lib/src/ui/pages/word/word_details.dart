@@ -1,3 +1,4 @@
+import 'package:dictionary/src/application/controllers/home_controller.dart';
 import 'package:dictionary/src/application/controllers/word_details_controller.dart';
 import 'package:dictionary/src/ui/widgets/scaffold_dictionary.dart';
 import 'package:flutter/material.dart';
@@ -35,9 +36,18 @@ class WordDetails extends GetView<WordDetailsController> {
                                       onTap: () => Get.back()),
                                   const Spacer(),
                                   InkWell(
-                                      child: Icon(Icons.star_border,
-                                          color: Colors.yellow,
-                                          size: Get.width * 0.1),
+                                      child: Obx(
+                                        () => Get.find<HomeController>()
+                                                .favoriteWords
+                                                .any((element) =>
+                                                    element == controller.word)
+                                            ? Icon(Icons.star,
+                                                color: Colors.yellow,
+                                                size: Get.width * 0.1)
+                                            : Icon(Icons.star_border,
+                                                color: Colors.yellow,
+                                                size: Get.width * 0.1),
+                                      ),
                                       onTap: () =>
                                           controller.saveFavoriteWord()),
                                 ],

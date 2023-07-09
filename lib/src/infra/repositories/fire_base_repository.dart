@@ -7,6 +7,7 @@ class FireBaseRepository implements IDataBaseRepository {
   UserCredential? user;
   CollectionReference? dictionaryCollection;
   Stream? collectionStream;
+
   @override
   Future<dynamic> login(String login, String password) async {
     try {
@@ -17,9 +18,6 @@ class FireBaseRepository implements IDataBaseRepository {
         return 'Internal Error';
       }
       collectionStream = dictionaryCollection!.doc(user!.user!.uid).snapshots();
-      collectionStream?.listen((event) {
-        print(event.data());
-      });
       return true;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -62,18 +60,6 @@ class FireBaseRepository implements IDataBaseRepository {
   }
 
   @override
-  Future<dynamic> getFavoriteWords() {
-    // TODO: implement getFavoriteWords
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<dynamic> getHistoryWords() {
-    // TODO: implement getHistoryWords
-    throw UnimplementedError();
-  }
-
-  @override
   Future removeFavoriteWord(String word) async {
     if (user == null || user!.user == null || dictionaryCollection == null) {
       return 'User not logged in';
@@ -92,5 +78,22 @@ class FireBaseRepository implements IDataBaseRepository {
         'historyWord': FieldValue.arrayRemove([word])
       }, SetOptions(merge: true));
     }
+  }
+
+  @override
+  Future<void> listenHistoryFavoriteWords(
+      Function(List<String> favoritesWord, List<String> historyWord)
+          onChanged) async {
+    collectionStream?.listen((event) {
+      Map<String, dynamic>? data = event.data() as Map<String, dynamic>?;
+      if (data != null) {
+        List<String> favoritesWord =
+            List<String>.from(data['favoriteWords'] ?? []);
+        favoritesWord.sort((a, b) => a.compareTo(b));
+        List<String> historyWord = List<String>.from(data['historyWord'] ?? []);
+        historyWord = historyWord.reversed.toList();
+        onChanged(favoritesWord, historyWord);
+      }
+    });
   }
 }

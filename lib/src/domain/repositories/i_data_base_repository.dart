@@ -4,6 +4,6 @@ abstract class IDataBaseRepository {
   Future<dynamic> addFavoriteWord(String word);
   Future<dynamic> removeFavoriteWord(String word);
   Future<dynamic> addHistoryWord(String word);
-  Future<dynamic> getFavoriteWords();
-  Future<dynamic> getHistoryWords();
+  Future<dynamic> listenHistoryFavoriteWords(
+      Function(List<String> favoritesWord, List<String> historyWord) onChanged);
 }
