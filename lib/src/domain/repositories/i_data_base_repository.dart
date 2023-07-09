@@ -6,4 +6,5 @@ abstract class IDataBaseRepository {
   Future<dynamic> addHistoryWord(String word);
   Future<dynamic> listenHistoryFavoriteWords(
       Function(List<String> favoritesWord, List<String> historyWord) onChanged);
+  Future<dynamic> createAccount(String email, String password);
 }

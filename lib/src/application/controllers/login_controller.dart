@@ -1,5 +1,7 @@
+import 'package:dictionary/src/application/bindings/create_account_binding.dart';
 import 'package:dictionary/src/application/bindings/home_binding.dart';
 import 'package:dictionary/src/domain/repositories/i_data_base_repository.dart';
+import 'package:dictionary/src/ui/pages/create_account/create_account.dart';
 import 'package:dictionary/src/ui/pages/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,5 +21,9 @@ class LoginController extends GetxController {
       Get.snackbar('Erro:', responseLogin.toString(),
           icon: const Icon(Icons.error), snackPosition: SnackPosition.BOTTOM);
     }
+  }
+
+  void goToRegister() {
+    Get.to(() => const CreateAccount(), binding: CreateAccountBinding());
   }
 }

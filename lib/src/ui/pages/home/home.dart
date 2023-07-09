@@ -13,7 +13,7 @@ class Home extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return ScaffoldDictionary(
       bottomNavigationBar: ConvexAppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: const Color(0xFF465275),
         style: TabStyle.react,
         activeColor: Colors.white,
         onTap: (int tabNum) => controller.changeWords(tabNum),
@@ -49,8 +49,8 @@ class Home extends GetView<HomeController> {
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
-                      borderSide:
-                          const BorderSide(color: Colors.blue, width: 0.8),
+                      borderSide: const BorderSide(
+                          color: Color(0xFF465275), width: 0.8),
                     )),
               ),
             ),

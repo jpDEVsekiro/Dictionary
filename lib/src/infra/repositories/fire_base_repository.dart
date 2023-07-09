@@ -96,4 +96,26 @@ class FireBaseRepository implements IDataBaseRepository {
       }
     });
   }
+
+  @override
+  Future<dynamic> createAccount(String email, String password) async {
+    try {
+      final credential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      user = credential;
+      collectionStream = dictionaryCollection!.doc(user!.user!.uid).snapshots();
+      return true;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        return 'The password provided is too weak.';
+      } else if (e.code == 'email-already-in-use') {
+        return 'The account already exists for that email.';
+      }
+    } catch (e) {
+      return 'Internal Error';
+    }
+  }
 }
