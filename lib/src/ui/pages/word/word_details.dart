@@ -31,7 +31,7 @@ class WordDetails extends GetView<WordDetailsController> {
                                 children: [
                                   InkWell(
                                       child: Icon(Icons.close,
-                                          color: Colors.red,
+                                          color: const Color(0xFF465275),
                                           size: Get.width * 0.1),
                                       onTap: () => Get.back()),
                                   const Spacer(),
@@ -42,10 +42,10 @@ class WordDetails extends GetView<WordDetailsController> {
                                                 .any((element) =>
                                                     element == controller.word)
                                             ? Icon(Icons.star,
-                                                color: Colors.yellow,
+                                                color: const Color(0xFF465275),
                                                 size: Get.width * 0.1)
                                             : Icon(Icons.star_border,
-                                                color: Colors.yellow,
+                                                color: const Color(0xFF465275),
                                                 size: Get.width * 0.1),
                                       ),
                                       onTap: () =>
@@ -343,7 +343,7 @@ class WordDetails extends GetView<WordDetailsController> {
                               width: Get.width * 0.47,
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
-                                color: Colors.red,
+                                color: Colors.grey[600],
                                 borderRadius: BorderRadius.circular(5),
                               ),
                               child: Text(
@@ -367,7 +367,7 @@ class WordDetails extends GetView<WordDetailsController> {
                               width: Get.width * 0.47,
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
-                                color: Colors.green,
+                                color: const Color(0xFF465275),
                                 borderRadius: BorderRadius.circular(5),
                               ),
                               child: Text(
