@@ -29,27 +29,30 @@ class CreateAccount extends GetView<CreateAccountController> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(top: Get.height * 0.2),
-                      child: TextField(
-                          style: TextStyle(fontSize: Get.width * 0.05),
-                          controller: controller.emailController,
-                          cursorColor: const Color(0xFF465275),
-                          decoration: InputDecoration(
-                              alignLabelWithHint: true,
-                              contentPadding: EdgeInsets.symmetric(
-                                  horizontal: Get.width * 0.02),
-                              hintText: 'Email',
-                              prefixIcon: const Icon(Icons.email,
-                                  color: Color(0xFF465275)),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                                borderSide: const BorderSide(
-                                    color: Color(0xFF465275), width: 0.8),
-                              ))),
+                      padding: EdgeInsets.only(
+                          top: Get.height * 0.06, bottom: Get.height * 0.07),
+                      child: Image.asset('assets/images/logo.jpg',
+                          width: Get.width * 0.25, height: Get.width * 0.25),
                     ),
+                    TextField(
+                        style: TextStyle(fontSize: Get.width * 0.05),
+                        controller: controller.emailController,
+                        cursorColor: const Color(0xFF465275),
+                        decoration: InputDecoration(
+                            alignLabelWithHint: true,
+                            contentPadding: EdgeInsets.symmetric(
+                                horizontal: Get.width * 0.02),
+                            hintText: 'Email',
+                            prefixIcon: const Icon(Icons.email,
+                                color: Color(0xFF465275)),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15.0),
+                              borderSide: const BorderSide(
+                                  color: Color(0xFF465275), width: 0.8),
+                            ))),
                     Padding(
                       padding: EdgeInsets.only(top: Get.height * 0.04),
                       child: TextField(

@@ -11,6 +11,9 @@ void main() async {
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Color(0xFF465275),
+      statusBarBrightness: Brightness.light));
   Get.lazyPut<IDataBaseRepository>(() => FireBaseRepository());
   await Get.find<IDataBaseRepository>().init();
   runApp(GetMaterialApp(

@@ -9,13 +9,12 @@ import 'package:get/get.dart';
 class LoginController extends GetxController {
   final TextEditingController loginController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final IDataBaseRepository _dataBaseRepository =
-      Get.find<IDataBaseRepository>();
+  IDataBaseRepository dataBaseRepository = Get.find<IDataBaseRepository>();
   final RxBool isLoading = false.obs;
 
   Future<void> login() async {
     isLoading.value = true;
-    dynamic responseLogin = await _dataBaseRepository.login(
+    dynamic responseLogin = await dataBaseRepository.login(
         loginController.text, passwordController.text);
     if (responseLogin == true) {
       Get.off(() => const Home(), binding: HomeBinding());

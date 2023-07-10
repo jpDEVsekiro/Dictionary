@@ -17,10 +17,9 @@ class WordCard extends StatelessWidget {
         child: Center(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: Get.width * 0.02),
-            child: Text(
-              word,
-              textAlign: TextAlign.center,
-            ),
+            child: Text(word,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: Get.width * 0.041)),
           ),
         ),
       ),

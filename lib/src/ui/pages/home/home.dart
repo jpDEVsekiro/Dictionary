@@ -25,37 +25,47 @@ class Home extends GetView<HomeController> {
       ),
       body: Column(
         children: [
-          Padding(
-            padding: EdgeInsets.symmetric(
-                vertical: Get.width * 0.02, horizontal: Get.height * 0.02),
-            child: TextField(
-              style: TextStyle(fontSize: Get.width * 0.05),
-              cursorColor: const Color(0xFF465275),
-              controller: controller.searchController,
-              onChanged: controller.search,
-              decoration: InputDecoration(
-                  alignLabelWithHint: true,
-                  contentPadding:
-                      EdgeInsets.symmetric(horizontal: Get.width * 0.02),
-                  hintText: 'Search...',
-                  suffixIcon: IconButton(
-                    icon: const Icon(
-                      Icons.clear,
-                      color: Color(0xFF465275),
+          Container(
+            color: const Color(0xFF465275),
+            child: Padding(
+              padding: EdgeInsets.only(
+                  bottom: Get.width * 0.04,
+                  left: Get.height * 0.02,
+                  right: Get.height * 0.02,
+                  top: Get.height * 0.04),
+              child: TextField(
+                style: TextStyle(fontSize: Get.width * 0.05),
+                cursorColor: const Color(0xFF465275),
+                controller: controller.searchController,
+                onChanged: controller.search,
+                decoration: InputDecoration(
+                    fillColor: Colors.white,
+                    hoverColor: Colors.white,
+                    focusColor: Colors.white,
+                    filled: true,
+                    alignLabelWithHint: true,
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: Get.width * 0.02),
+                    hintText: 'Search',
+                    suffixIcon: IconButton(
+                      icon: const Icon(
+                        Icons.clear,
+                        color: Color(0xFF465275),
+                      ),
+                      focusColor: const Color(0xFF465275),
+                      onPressed: () => controller.clearSearch(),
                     ),
-                    focusColor: const Color(0xFF465275),
-                    onPressed: () => controller.clearSearch(),
-                  ),
-                  prefixIcon:
-                      const Icon(Icons.search, color: Color(0xFF465275)),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                    borderSide:
-                        const BorderSide(color: Color(0xFF465275), width: 0.8),
-                  )),
+                    prefixIcon:
+                        const Icon(Icons.search, color: Color(0xFF465275)),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.0),
+                      borderSide: const BorderSide(
+                          color: Color(0xFF465275), width: 0.8),
+                    )),
+              ),
             ),
           ),
           Expanded(

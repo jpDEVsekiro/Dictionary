@@ -29,9 +29,9 @@ class Login extends GetView<LoginController> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'assets/images/Dictionary.jpg',
+                      'assets/images/dictionary.jpg',
                       width: Get.width * 0.75,
-                      height: Get.height * 0.39,
+                      height: Get.height * 0.3,
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: Get.height * 0.0),
@@ -81,7 +81,7 @@ class Login extends GetView<LoginController> {
                     ),
                     Padding(
                       padding: EdgeInsets.only(
-                          top: Get.height * 0.05, bottom: Get.height * 0.015),
+                          top: Get.height * 0.09, bottom: Get.height * 0.015),
                       child: Obx(
                         () => controller.isLoading.value
                             ? const CircularProgressIndicator(
