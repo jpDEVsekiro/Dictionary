@@ -37,3 +37,14 @@ https://github.com/jpDEVsekiro/Dictionary/blob/main/apk/Dictionary.apk
 
 >  This is a challenge by [Coodesh](https://coodesh.com/)
 
+# Como Rodar Projeto
+
+É necessário ter Flutter, Dart e Android Studio instalado e configurado corretamente. 
+
+1 - Clonar Repositório.
+
+2 - Abrir projeto no Android Studio.
+
+3 - Rodar flutter pub get no terminal.
+
+4- Rodar o projeto.
