@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.dictionary">
    <application
-        android:label="dictionary"
+        android:label="Dictionary"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
