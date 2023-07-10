@@ -31,5 +31,6 @@ Utilizando plugin flutter_tts (https://pub.dev/packages/flutter_tts) Dictionary 
 [device-2023-07-10-092214.webm](https://github.com/jpDEVsekiro/Dictionary/assets/71463029/f1aa0f4f-a703-43cb-b17e-4e23fd6508d5)
 
 # APK
-Segue um link para dowload do APK atualizado.
+Segue link para download do APK.
 
+https://github.com/jpDEVsekiro/Dictionary/blob/main/apk/Dictionary.apk
