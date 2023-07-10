@@ -23,7 +23,7 @@ Dictionary utiliza firebase para armazenar informações como histórico e lista
 
 ![2023-07-10 08-41-32](https://github.com/jpDEVsekiro/Dictionary/assets/71463029/3fd90fdc-30cd-4d00-a025-310955fb6f95)
 
-# Pronuncia das Palavras
+# Pronúncia de Palavras
 
 Utilizando plugin flutter_tts (https://pub.dev/packages/flutter_tts) Dictionary conta com a função de pronunciar palavras, permitindo a reprodução do áudio de qualquer texto de forma offline e prática.
 
