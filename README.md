@@ -34,3 +34,6 @@ Utilizando plugin flutter_tts (https://pub.dev/packages/flutter_tts) Dictionary 
 Segue link para download do APK.
 
 https://github.com/jpDEVsekiro/Dictionary/blob/main/apk/Dictionary.apk
+
+>  This is a challenge by [Coodesh](https://coodesh.com/)
+
