@@ -107,7 +107,8 @@ class WordDetails extends GetView<WordDetailsController> {
                                                 controller.isPlaying.value
                                                     ? Icons.pause
                                                     : Icons.play_arrow_rounded,
-                                                size: Get.width * 0.1),
+                                                size: Get.width * 0.1,
+                                                color: const Color(0xFF465275)),
                                           ),
                                           onTap: () => controller.playAudio()),
                                     ),

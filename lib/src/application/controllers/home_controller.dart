@@ -32,6 +32,9 @@ class HomeController extends GetxController {
       historyWords.addAll(historyWord);
       favoriteWords.clear();
       favoriteWords.addAll(favoritesWord);
+      if (tabNum != 0) {
+        search(searchController.text);
+      }
     });
     skip = 0;
     addPaging();
