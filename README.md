@@ -35,8 +35,6 @@ Segue link para download do APK.
 
 https://github.com/jpDEVsekiro/Dictionary/blob/main/apk/Dictionary.apk
 
->  This is a challenge by [Coodesh](https://coodesh.com/)
-
 # Como Rodar Projeto
 
 É necessário ter Flutter, Dart e Android Studio instalado e configurado corretamente. 
