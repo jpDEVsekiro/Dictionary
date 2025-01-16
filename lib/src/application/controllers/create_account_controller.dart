@@ -1,6 +1,4 @@
-import 'package:dictionary/src/application/bindings/home_binding.dart';
-import 'package:dictionary/src/domain/repositories/i_data_base_repository.dart';
-import 'package:dictionary/src/ui/pages/home/home.dart';
+import 'package:dic/src/domain/repositories/i_data_base_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,40 +11,28 @@ class CreateAccountController extends GetxController {
       Get.find<IDataBaseRepository>();
   final RxBool isLoading = false.obs;
 
-  createAccount() async {
-    if (valid() == false) {
-      return;
+  Future<dynamic> createAccount() async {
+    String? validAccount = valid();
+    if (validAccount != null) {
+      return validAccount;
     }
     isLoading.value = true;
     dynamic result = await _dataBaseRepository.createAccount(
         emailController.text, passwordController.text);
-    if (result == true) {
-      Get.offAll(() => const Home(), binding: HomeBinding());
-    } else {
-      Get.snackbar('Erro:', result.toString(),
-          icon: const Icon(Icons.error), snackPosition: SnackPosition.BOTTOM);
-    }
     isLoading.value = false;
+    return result;
   }
 
-  valid() {
+  String? valid() {
     if (emailController.text.isEmpty) {
-      Get.snackbar('Erro', 'Email is empty',
-          icon: const Icon(Icons.error), snackPosition: SnackPosition.BOTTOM);
-      return false;
+      return 'Email is empty';
     } else if (GetUtils.isEmail(emailController.text) == false) {
-      Get.snackbar('Erro', 'Email is invalid',
-          icon: const Icon(Icons.error), snackPosition: SnackPosition.BOTTOM);
-      return false;
+      return 'Email is invalid';
     } else if (passwordController.text.isEmpty) {
-      Get.snackbar('Erro', 'Password is empty',
-          icon: const Icon(Icons.error), snackPosition: SnackPosition.BOTTOM);
-      return false;
+      return 'Password is empty';
     } else if (passwordController.text != confirmPasswordController.text) {
-      Get.snackbar('Erro', 'Passwords do not match',
-          icon: const Icon(Icons.error), snackPosition: SnackPosition.BOTTOM);
-      return false;
+      return 'Passwords do\'t match';
     }
-    return true;
+    return null;
   }
 }

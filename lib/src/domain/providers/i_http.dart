@@ -1,4 +1,4 @@
-import 'package:dictionary/src/domain/models/method.dart';
+import 'package:dic/src/domain/models/method.dart';
 
 abstract class IHttp {
   Future<dynamic> request(

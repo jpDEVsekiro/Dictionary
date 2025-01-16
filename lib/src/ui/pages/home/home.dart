@@ -1,13 +1,13 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
-import 'package:dictionary/src/application/controllers/home_controller.dart';
-import 'package:dictionary/src/ui/pages/home/widgets/word_card.dart';
-import 'package:dictionary/src/ui/widgets/scaffold_dictionary.dart';
+import 'package:dic/src/application/controllers/home_controller.dart';
+import 'package:dic/src/ui/pages/home/widgets/word_card.dart';
+import 'package:dic/src/ui/widgets/scaffold_dictionary.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class Home extends GetView<HomeController> {
-  const Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +34,7 @@ class Home extends GetView<HomeController> {
                   right: Get.height * 0.02,
                   top: Get.height * 0.04),
               child: TextField(
+                key: const Key('search_home'),
                 style: TextStyle(fontSize: Get.width * 0.05),
                 cursorColor: const Color(0xFF465275),
                 controller: controller.searchController,
@@ -70,10 +71,13 @@ class Home extends GetView<HomeController> {
           ),
           Expanded(
             child: PagedGridView(
+                key: const Key('words_grid'),
                 pagingController: controller.pagingController,
+                scrollController: controller.scrollController,
                 padding: EdgeInsets.symmetric(horizontal: Get.width * 0.02),
                 builderDelegate: PagedChildBuilderDelegate(
                     itemBuilder: (context, word, index) => WordCard(
+                          key: Key('${word.toString()}_${controller.tabName}'),
                           word: word.toString(),
                           onTap: () => controller.navigateWord(word.toString()),
                         ),

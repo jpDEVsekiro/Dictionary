@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dictionary/src/domain/repositories/i_data_base_repository.dart';
+import 'package:dic/src/domain/repositories/i_data_base_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -32,7 +32,14 @@ class FireBaseRepository implements IDataBaseRepository {
 
   @override
   Future<void> init() async {
-    await Firebase.initializeApp();
+    await Firebase.initializeApp(
+        options: FirebaseOptions(
+      apiKey: 'AIzaSyCBbq_7yPjwwmFxrNY7dyFrIrPPd-VH2Wg',
+      appId: '1:248571106656:android:72d188fa73874dda613a05',
+      messagingSenderId: 'sendid',
+      projectId: 'dictionary-83b6e',
+      storageBucket: 'dictionary-83b6e.firebasestorage.app',
+    ));
     dictionaryCollection = FirebaseFirestore.instance.collection('UserWords');
   }
 

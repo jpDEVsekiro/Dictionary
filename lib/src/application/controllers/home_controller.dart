@@ -1,9 +1,10 @@
 import 'dart:convert';
+import 'dart:io';
 
-import 'package:dictionary/src/application/bindings/word_details_binding.dart';
-import 'package:dictionary/src/domain/models/word.dart';
-import 'package:dictionary/src/domain/repositories/i_data_base_repository.dart';
-import 'package:dictionary/src/ui/pages/word/word_details.dart';
+import 'package:dic/src/application/bindings/word_details_binding.dart';
+import 'package:dic/src/domain/models/word.dart';
+import 'package:dic/src/domain/repositories/i_data_base_repository.dart';
+import 'package:dic/src/ui/pages/word_details/word_details.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -19,23 +20,39 @@ class HomeController extends GetxController {
   final int take = 200;
   int tabNum = 0;
   int skip = 0;
+  final ScrollController scrollController = ScrollController();
   final TextEditingController searchController = TextEditingController();
   final IDataBaseRepository _dataBaseRepository =
       Get.find<IDataBaseRepository>();
 
+  String get tabName {
+    switch (tabNum) {
+      case 0:
+        return 'words';
+      case 1:
+        return 'favorite';
+      case 2:
+        return 'history';
+      default:
+        return '';
+    }
+  }
+
   @override
   void onInit() async {
     await getWords();
-    _dataBaseRepository
-        .listenHistoryFavoriteWords((favoritesWord, historyWord) {
-      historyWords.clear();
-      historyWords.addAll(historyWord);
-      favoriteWords.clear();
-      favoriteWords.addAll(favoritesWord);
-      if (tabNum != 0) {
-        search(searchController.text);
-      }
-    });
+    if (Platform.environment.containsKey('FLUTTER_TEST') == false) {
+      _dataBaseRepository
+          .listenHistoryFavoriteWords((favoritesWord, historyWord) {
+        historyWords.clear();
+        historyWords.addAll(historyWord);
+        favoriteWords.clear();
+        favoriteWords.addAll(favoritesWord);
+        if (tabNum != 0) {
+          search(searchController.text);
+        }
+      });
+    }
     skip = 0;
     addPaging();
     pagingController.addPageRequestListener((pageKey) {

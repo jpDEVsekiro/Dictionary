@@ -1,7 +1,7 @@
-import 'package:dictionary/src/application/bindings/login_binding.dart';
-import 'package:dictionary/src/domain/repositories/i_data_base_repository.dart';
-import 'package:dictionary/src/infra/repositories/fire_base_repository.dart';
-import 'package:dictionary/src/ui/pages/login/login.dart';
+import 'package:dic/src/application/bindings/login_binding.dart';
+import 'package:dic/src/domain/repositories/i_data_base_repository.dart';
+import 'package:dic/src/infra/repositories/fire_base_repository.dart';
+import 'package:dic/src/ui/pages/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';

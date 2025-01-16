@@ -1,8 +1,6 @@
-import 'package:dictionary/src/application/bindings/create_account_binding.dart';
-import 'package:dictionary/src/application/bindings/home_binding.dart';
-import 'package:dictionary/src/domain/repositories/i_data_base_repository.dart';
-import 'package:dictionary/src/ui/pages/create_account/create_account.dart';
-import 'package:dictionary/src/ui/pages/home/home.dart';
+import 'package:dic/src/application/bindings/create_account_binding.dart';
+import 'package:dic/src/domain/repositories/i_data_base_repository.dart';
+import 'package:dic/src/ui/pages/create_account/create_account.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,17 +10,12 @@ class LoginController extends GetxController {
   IDataBaseRepository dataBaseRepository = Get.find<IDataBaseRepository>();
   final RxBool isLoading = false.obs;
 
-  Future<void> login() async {
+  Future<dynamic> login() async {
     isLoading.value = true;
     dynamic responseLogin = await dataBaseRepository.login(
         loginController.text, passwordController.text);
-    if (responseLogin == true) {
-      Get.off(() => const Home(), binding: HomeBinding());
-    } else {
-      Get.snackbar('Erro:', responseLogin.toString(),
-          icon: const Icon(Icons.error), snackPosition: SnackPosition.BOTTOM);
-    }
     isLoading.value = false;
+    return responseLogin;
   }
 
   void goToRegister() {

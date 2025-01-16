@@ -1,10 +1,12 @@
-import 'package:dictionary/src/application/controllers/create_account_controller.dart';
-import 'package:dictionary/src/ui/widgets/scaffold_dictionary.dart';
+import 'package:dic/src/application/bindings/home_binding.dart';
+import 'package:dic/src/application/controllers/create_account_controller.dart';
+import 'package:dic/src/ui/pages/home/home.dart';
+import 'package:dic/src/ui/widgets/scaffold_dictionary.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CreateAccount extends GetView<CreateAccountController> {
-  const CreateAccount({Key? key}) : super(key: key);
+  const CreateAccount({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +21,7 @@ class CreateAccount extends GetView<CreateAccountController> {
             width: Get.width * 0.9,
             height: Get.height * 0.75,
             child: Card(
+              color: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20.0),
               ),
@@ -35,6 +38,7 @@ class CreateAccount extends GetView<CreateAccountController> {
                           width: Get.width * 0.25, height: Get.width * 0.25),
                     ),
                     TextField(
+                        key: const Key('email_create_account'),
                         style: TextStyle(fontSize: Get.width * 0.05),
                         controller: controller.emailController,
                         cursorColor: const Color(0xFF465275),
@@ -56,6 +60,7 @@ class CreateAccount extends GetView<CreateAccountController> {
                     Padding(
                       padding: EdgeInsets.only(top: Get.height * 0.04),
                       child: TextField(
+                          key: const Key('password_create_account'),
                           style: TextStyle(fontSize: Get.width * 0.05),
                           obscureText: true,
                           controller: controller.passwordController,
@@ -80,6 +85,7 @@ class CreateAccount extends GetView<CreateAccountController> {
                     Padding(
                       padding: EdgeInsets.only(top: Get.height * 0.04),
                       child: TextField(
+                          key: const Key('confirm_password_create_account'),
                           style: TextStyle(fontSize: Get.width * 0.05),
                           obscureText: true,
                           controller: controller.confirmPasswordController,
@@ -109,7 +115,19 @@ class CreateAccount extends GetView<CreateAccountController> {
                             ? const CircularProgressIndicator(
                                 color: Color(0xFF465275))
                             : InkWell(
-                                onTap: () => controller.createAccount(),
+                                key: const Key('create_account_button'),
+                                onTap: () async {
+                                  dynamic result =
+                                      await controller.createAccount();
+                                  if (result == true) {
+                                    Get.offAll(() => const Home(),
+                                        binding: HomeBinding());
+                                  } else {
+                                    Get.snackbar('Erro:', result.toString(),
+                                        icon: const Icon(Icons.error),
+                                        snackPosition: SnackPosition.BOTTOM);
+                                  }
+                                },
                                 child: Container(
                                   width: Get.width * 0.5,
                                   height: Get.height * 0.06,

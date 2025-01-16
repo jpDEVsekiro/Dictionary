@@ -1,5 +1,7 @@
-import 'package:dictionary/src/application/controllers/login_controller.dart';
-import 'package:dictionary/src/ui/widgets/scaffold_dictionary.dart';
+import 'package:dic/src/application/bindings/home_binding.dart';
+import 'package:dic/src/application/controllers/login_controller.dart';
+import 'package:dic/src/ui/pages/home/home.dart';
+import 'package:dic/src/ui/widgets/scaffold_dictionary.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,6 +21,7 @@ class Login extends GetView<LoginController> {
             width: Get.width * 0.9,
             height: Get.height * 0.75,
             child: Card(
+              color: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20.0),
               ),
@@ -36,6 +39,7 @@ class Login extends GetView<LoginController> {
                     Padding(
                       padding: EdgeInsets.only(top: Get.height * 0.0),
                       child: TextField(
+                          key: const Key('email'),
                           style: TextStyle(fontSize: Get.width * 0.05),
                           controller: controller.loginController,
                           cursorColor: const Color(0xFF465275),
@@ -58,6 +62,7 @@ class Login extends GetView<LoginController> {
                     Padding(
                       padding: EdgeInsets.only(top: Get.height * 0.04),
                       child: TextField(
+                          key: const Key('password'),
                           style: TextStyle(fontSize: Get.width * 0.05),
                           obscureText: true,
                           controller: controller.passwordController,
@@ -87,7 +92,18 @@ class Login extends GetView<LoginController> {
                             ? const CircularProgressIndicator(
                                 color: Color(0xFF465275))
                             : InkWell(
-                                onTap: () => controller.login(),
+                                key: const Key('login_button'),
+                                onTap: () async {
+                                  dynamic result = await controller.login();
+                                  if (result == true) {
+                                    Get.off(() => const Home(),
+                                        binding: HomeBinding());
+                                  } else {
+                                    Get.snackbar('Erro:', result.toString(),
+                                        icon: const Icon(Icons.error),
+                                        snackPosition: SnackPosition.BOTTOM);
+                                  }
+                                },
                                 child: Container(
                                   width: Get.width * 0.5,
                                   height: Get.height * 0.06,
@@ -106,6 +122,7 @@ class Login extends GetView<LoginController> {
                       ),
                     ),
                     InkWell(
+                      key: const Key('register_button'),
                       onTap: () => controller.goToRegister(),
                       child: Text('Don\'t have an account? Sign up',
                           style: TextStyle(

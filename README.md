@@ -4,7 +4,7 @@
 
 ![prints](https://github.com/jpDEVsekiro/Dictionary/assets/71463029/8f1b2d2e-c344-46fb-b212-e389fa3fd21f)
 
-Olá, bem vindo ao meu projeto! 
+Olá, bem vindo ao meu projeto!
 
 Dictionary é um aplicativo desenvolvido em Flutter com uso de Firebase. O app permite que usuários perquisem palavras e visualizem seu significado, pronúncia e sinônimos. Além de contar com funções de login, favorito e histórico. Organizando palavras em um aplicativo simples e intuitivo.
 
@@ -14,11 +14,11 @@ O aplicativo conta com um sistema de rolagem de palavras inteligente e perfomát
 
 ![device-2023-07-09-221107](https://github.com/jpDEVsekiro/Dictionary/assets/71463029/c882dff9-7135-4ff5-8497-b4df1386eaab)
 
-# Gerenciador de Estado e Injetor de Dependências 
+# Gerenciador de Estado e Injetor de Dependências
 
 Dicionary utiliza GetX (https://github.com/jonataslaw/getx) como gerenciador e injetor de dependências. GetX é uma solução leve e rápida para Flutter, que permite criar um projeto organizado e com código limpo.
 
-# Banco de Dados 
+# Banco de Dados
 
 Dictionary utiliza firebase para armazenar informações como histórico e lista de favoritos. O firebase é uma das soluções mais rápidas para Flutter, entregando um back-end completo com autenticação de usuário, criação de contas e armazenamento de informações em tempo real.
 
@@ -37,7 +37,7 @@ https://github.com/jpDEVsekiro/Dictionary/blob/main/apk/Dictionary.apk
 
 # Como Rodar Projeto
 
-É necessário ter Flutter, Dart e Android Studio instalado e configurado corretamente. 
+É necessário ter Flutter, Dart e Android Studio instalado e configurado corretamente.
 
 1 - Clonar Repositório.
 
@@ -46,3 +46,9 @@ https://github.com/jpDEVsekiro/Dictionary/blob/main/apk/Dictionary.apk
 3 - Rodar flutter pub get no terminal.
 
 4- Rodar o projeto.
+
+# Como rodar testes
+
+Para rodar os testes unitários é necessário rodar o comando `flutter test` no terminal.
+
+Para rodar os testes de integração é necessário rodar o comando `flutter test integration_test/all_integration_test.dart` no terminal.

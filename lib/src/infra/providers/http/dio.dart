@@ -1,5 +1,5 @@
-import 'package:dictionary/src/domain/models/method.dart';
-import 'package:dictionary/src/domain/providers/i_http.dart';
+import 'package:dic/src/domain/models/method.dart';
+import 'package:dic/src/domain/providers/i_http.dart';
 import 'package:dio/dio.dart';
 
 class DioHttp implements IHttp {
