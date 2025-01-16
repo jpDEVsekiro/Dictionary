@@ -1,11 +1,11 @@
-import 'package:dictionary/src/application/controllers/home_controller.dart';
-import 'package:dictionary/src/application/controllers/word_details_controller.dart';
-import 'package:dictionary/src/ui/widgets/scaffold_dictionary.dart';
+import 'package:dic/src/application/controllers/home_controller.dart';
+import 'package:dic/src/application/controllers/word_details_controller.dart';
+import 'package:dic/src/ui/widgets/scaffold_dictionary.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class WordDetails extends GetView<WordDetailsController> {
-  const WordDetails({Key? key}) : super(key: key);
+  const WordDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,21 +30,27 @@ class WordDetails extends GetView<WordDetailsController> {
                               child: Row(
                                 children: [
                                   InkWell(
+                                      key: const Key('close_button'),
                                       child: Icon(Icons.close,
                                           color: const Color(0xFF465275),
                                           size: Get.width * 0.1),
                                       onTap: () => Get.back()),
                                   const Spacer(),
                                   InkWell(
+                                      key: const Key('favorite_button'),
                                       child: Obx(
                                         () => Get.find<HomeController>()
                                                 .favoriteWords
                                                 .any((element) =>
                                                     element == controller.word)
-                                            ? Icon(Icons.star,
+                                            ? Icon(
+                                                key: Key('star'),
+                                                Icons.star,
                                                 color: const Color(0xFF465275),
                                                 size: Get.width * 0.1)
-                                            : Icon(Icons.star_border,
+                                            : Icon(
+                                                key: Key('empty_star'),
+                                                Icons.star_border,
                                                 color: const Color(0xFF465275),
                                                 size: Get.width * 0.1),
                                       ),
@@ -59,6 +65,7 @@ class WordDetails extends GetView<WordDetailsController> {
                               padding: EdgeInsets.symmetric(
                                   horizontal: Get.width * 0.02),
                               child: Card(
+                                key: const Key('word_card'),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15),
                                 ),
@@ -104,6 +111,7 @@ class WordDetails extends GetView<WordDetailsController> {
                                       child: InkWell(
                                           child: Obx(
                                             () => Icon(
+                                                key: Key('play_audio'),
                                                 controller.isPlaying.value
                                                     ? Icons.pause
                                                     : Icons.play_arrow_rounded,
@@ -126,6 +134,7 @@ class WordDetails extends GetView<WordDetailsController> {
                                       horizontal: Get.width * 0.02,
                                       vertical: Get.height * 0.01),
                                   child: Text(
+                                    key: const Key('meaning'),
                                     'Meaning',
                                     style: TextStyle(
                                       fontSize: Get.width * 0.07,
@@ -155,6 +164,7 @@ class WordDetails extends GetView<WordDetailsController> {
                                       horizontal: Get.width * 0.02,
                                       vertical: Get.height * 0.01),
                                   child: Text(
+                                    key: const Key('synonyms'),
                                     'Synonyms',
                                     style: TextStyle(
                                       fontSize: Get.width * 0.07,
@@ -215,6 +225,7 @@ class WordDetails extends GetView<WordDetailsController> {
                                     horizontal: Get.width * 0.02,
                                     vertical: Get.height * 0.01),
                                 child: Text(
+                                  key: const Key('examples'),
                                   'Examples',
                                   style: TextStyle(
                                     fontSize: Get.width * 0.07,
@@ -272,6 +283,7 @@ class WordDetails extends GetView<WordDetailsController> {
                                     horizontal: Get.width * 0.02,
                                     vertical: Get.height * 0.01),
                                 child: Text(
+                                  key: const Key('syllables'),
                                   'Syllables',
                                   style: TextStyle(
                                     fontSize: Get.width * 0.07,
@@ -348,6 +360,7 @@ class WordDetails extends GetView<WordDetailsController> {
                                 borderRadius: BorderRadius.circular(5),
                               ),
                               child: Text(
+                                key: const Key('back_word_button'),
                                 'Back',
                                 style: TextStyle(
                                   fontSize: Get.width * 0.05,
@@ -372,6 +385,7 @@ class WordDetails extends GetView<WordDetailsController> {
                                 borderRadius: BorderRadius.circular(5),
                               ),
                               child: Text(
+                                key: const Key('next_word_button'),
                                 'Next',
                                 style: TextStyle(
                                   fontSize: Get.width * 0.05,
